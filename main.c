@@ -56,7 +56,7 @@ printf("\nl:ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:lO");
 printf("\n");
 printf("\nBy LucaPancetitA");
 printf("\n");
-printf("Alpha 6");
+printf("Alpha 9");
 
 getch();
 
