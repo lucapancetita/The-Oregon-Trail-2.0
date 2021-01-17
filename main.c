@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, decrobo, probC;
+int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, decrobo, probC, probC2;
 float rta, hambre1=100, hambre2=100, hambre3=100, hambre4=100, hambre5=100, salud1=100, salud2=100, salud3=100, salud4=100, salud5=100;
 main(){
 srand (getpid());
@@ -56,7 +56,7 @@ printf("\nl:ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:lO");
 printf("\n");
 printf("\nBy LucaPancetitA");
 printf("\n");
-printf("Alpha 9");
+printf("Alpha 11");
 
 getch();
 
@@ -242,7 +242,34 @@ getch();
 	if(probC < 4){
 		printf("Debido a una distracción pasaste por arriba de un pozo, la carreta sufre daños....");
 		printf("\n");
+		//Daño
+		//Estado
+		
+		//Como Nuevo
+		if(estC < 100 && estC >= 75){
+			estC = estC - 5;
+			printf("\n Los daños fueron minimos gracias al buen estado de la carreta....");
+		}
+		//Aceptable
+		if(estC < 75 && estC >=50){
+			estC = estC - 10;
+			printf("\n Los daños fueron menores debido a que la carreta aún no estaba demasiado dañada...");
+		}
+		//Mal
+		if(estC < 50 && estC >= 25){
+			estC = estC - 15;
+			printf("\n Debido al mal estado en la carreta los daños fueron mayores a lo normal...");
+		}
+		//PELIGROSO
+		if(estC < 25){
+		probC2 = rand() % 11;
+		if(probC2 < 3){
+			goto F;
+		} else {
 		estC = estC - 20;
+		printf("\n El estado de la carreta es critico y debido a esto los daños fueron mayores a lo normal....");
+		}
+		}
 	}
 	
 	
