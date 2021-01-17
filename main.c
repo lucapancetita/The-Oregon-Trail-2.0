@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, decrobo;
+int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, decrobo, probC;
 float rta, hambre1=100, hambre2=100, hambre3=100, hambre4=100, hambre5=100, salud1=100, salud2=100, salud3=100, salud4=100, salud5=100;
 main(){
 srand (getpid());
@@ -236,6 +236,15 @@ getch();
 	if(estC < 1){
 		goto F;
 	}
+	//Sistema Carreta
+	estC = estC - 18;
+	probC = rand() % 11;
+	if(probC < 4){
+		printf("Debido a una distracción pasaste por arriba de un pozo, la carreta sufre daños....");
+		printf("\n");
+		estC = estC - 20;
+	}
+	
 	
 	//Sistema de hambre
 	if(salud1 > 0 && salud1 < 101){
@@ -588,14 +597,17 @@ getch();
 		switch(rta5){
 			case 1:
 			if(materiales > 0 && materiales > 4){
-				estC = estC + 20;
+				estC = estC + 15;
 				materiales = materiales - 4;	
+			} else {
+			printf("\nNo tienes suficientes materiales...");		
+			}
 				break;
 				
 			case 0:	
-			printf("\nNo tienes suficientes materiales...");
+			printf("\nDecides no gastar materiales...");
 			break;
-		}
+		
 		
 		}
 		printf("\n");
