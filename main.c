@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, probrobo2, decrobo, probC, probC2;
+int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, probrobo2, decrobo, probC, probC2, probT, probCom, rtaT, rtaCom, rta6;
 float rta, hambre1=100, hambre2=100, hambre3=100, hambre4=100, hambre5=100, salud1=100, salud2=100, salud3=100, salud4=100, salud5=100;
 main(){
 srand (getpid());
@@ -56,7 +56,7 @@ printf("\nl:ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:lO");
 printf("\n");
 printf("\nBy LucaPancetitA");
 printf("\n");
-printf("Alpha 20");
+printf("BETA 1");
 
 getch();
 
@@ -231,7 +231,7 @@ getch();
 	printf("\n");
 
 	
-	if (salud1 < 0 && salud2 < 0 && salud3 < 0 && salud4 < 0 && salud5 < 0){
+	if (salud1 <= 0 && salud2 <= 0 && salud3 <= 0 && salud4 <= 0 && salud5 <= 0){
 		goto F;
 	}
 	
@@ -560,7 +560,7 @@ if(materiales < 0){
 			switch(rtaE){
 				case 1:
 				printf("\n %s: ", nombre1);
-			if (salud1 < 0){
+			if (salud1 <= 0){
 				printf("\nEstado: MUERTO");
 				getch();
 			}
@@ -590,7 +590,7 @@ if(materiales < 0){
 				case 2:
 				printf("\n %s: ", nombre2);
 			printf("\n %f", salud2);
-			if (salud2 < 0){
+			if (salud2 <= 0){
 				printf("\nEstado: MUERTO");
 				getch();
 			}
@@ -620,7 +620,7 @@ if(materiales < 0){
 				
 				case 3:
 				printf("\n %s: ", nombre3);
-			if (salud3 < 0){
+			if (salud3 <= 0){
 				printf("\nEstado: MUERTO");
 				getch();
 			}
@@ -649,7 +649,7 @@ if(materiales < 0){
 				
 				case 4:
 				printf("\n %s: ", nombre4);
-			if (salud4 < 0){
+			if (salud4 <= 0){
 				printf("\nEstado: MUERTO");
 				getch();
 			}
@@ -678,7 +678,7 @@ if(materiales < 0){
 				
 				case 5:
 				printf("\n %s: ", nombre5);
-			if (salud5 < 0){
+			if (salud5 <= 0){
 				printf("\nEstado: MUERTO");
 				getch();
 			}
@@ -772,7 +772,110 @@ if(materiales < 0){
 		break;
 		
 		case 6:
-			printf("Falta implementar :)");
+			printf("\n Que materiales quieres conseguir?");
+			printf("\n 1-Materiales 2-Comida: ");
+			scanf("%d", &rta6);
+			switch(rta6){
+				case 1:
+					//materiales
+					probT = rand() % 101;
+					printf("\n probT = %d", probT);
+					printf("\nQuien intentara conseguir los materiales?");
+					printf("\n 1=%s - 2= %s", nombre1, nombre2);
+					printf("\n 3=%s - 4=%s", nombre3, nombre4);
+					printf("\n 5=%s", nombre5);
+					printf("\nEscriba su eleccion aqui: ");
+					scanf("%d", &rtaT);
+					printf("rtaT: %d", rtaT);
+					if(probT <= 10){
+						printf("\n Mientras talabas el arbol, este se cae sobre ti....");
+						if (rtaT == 1){
+							salud1 = 0;
+						}
+						if (rtaT == 2){
+							salud2 = 0;
+						}
+						if (rtaT == 3){
+							salud3 = 0;
+						}
+						if (rtaT == 4){
+							salud4 = 0;
+						}
+						if (rtaT == 5){
+							salud5 = 0;
+						}
+					}
+					if(probT > 10 && probT <= 50){
+						printf("\n Materiales conseguidos: 5");
+						materiales = materiales + 5;
+					}
+					if(probT > 50 && probT <= 80){
+						printf("\n Materiales conseguidos: 8");
+						materiales = materiales + 8;	
+					}
+					if(probT > 80 && probT <= 99){
+						printf("\n Materiales conseguidos: 10");
+						materiales = materiales + 10;
+					}
+					if(probT == 100){
+						printf("\nEncontraste un cofre enterrado bajo tierra...");
+						printf("\n Materiales conseguidos: 40");
+						printf("\n Balas conseguidas: 2");
+						materiales = materiales + 40;
+						municion = municion + 2;
+					}
+					getch();
+					break;
+					
+					case 2:
+						//comida
+					probCom = rand() % 101;
+					printf("\n probCom = %d", probCom);
+					printf("Quien intentara conseguir la comida?");
+					printf("\n 1=%s - 2= %s", nombre1, nombre2);
+					printf("\n 3=%s - 4=%s", nombre3, nombre4);
+					printf("\n 5=%s", nombre5);
+					scanf("%d", &rtaCom);
+					if(probCom <= 10){
+						printf("\n Fuiste asesinado por un animal salvaje....");
+						if (rtaCom == 1){
+							salud1 = 0;
+						}
+						if (rtaCom == 2){
+							salud2 = 0;
+						}
+						if (rtaCom == 3){
+							salud3 = 0;
+						}
+						if (rtaCom == 4){
+							salud4 = 0;
+						}
+						if (rtaCom == 5){
+							salud5 = 0;
+						}
+					}
+					if(probCom > 10 && probCom <= 50){
+						printf("\n Comida conseguida: 5");
+						cantcomida = cantcomida + 5;
+					}
+					if(probCom > 50 && probCom <= 80){
+						printf("\n Comida conseguida: 8");
+						cantcomida = cantcomida + 8;	
+					}
+					if(probCom > 80 && probCom <= 99){
+						printf("\n Comida conseguida: 10");
+						cantcomida = cantcomida + 10;
+					}
+					if(probCom = 100){
+						printf("\nEncontraste una cabaña abandonada llena de comida...");
+						printf("\n Comida conseguida: 40");
+						printf("\n Balas conseguidas: 2");
+						cantcomida = cantcomida + 40;
+						municion = municion + 2;
+					}
+					getch();
+					break;
+			}
 			getch();
 			break;
 		
