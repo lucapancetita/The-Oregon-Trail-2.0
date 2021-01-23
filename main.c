@@ -56,7 +56,7 @@ printf("\nl:ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:lO");
 printf("\n");
 printf("\nBy LucaPancetitA");
 printf("\n");
-printf("Alpha 11");
+printf("Alpha 18");
 
 getch();
 
@@ -421,6 +421,59 @@ getch();
 		salud5==0;
 	}
 	
+	//Sistema Robo
+	probrobo = rand() % 11;
+	printf("\n");
+	if(probrobo < 3){
+		printf("\n TE ESTAN ROBANDO!!!!!!");
+		printf("\nQue quieres hacer?");
+			printf("\n 1=Defenderte / 0=Dejar que te roben: ");
+			scanf("%d", &decrobo);
+		switch(decrobo){
+			case 1:
+				if(municion > 0){
+					municion=municion - 1;
+					printf("\n Te defendiste con exito de los ladrones...");
+				} else {
+					printf("\n No tienes munición....");
+					materiales = materiales - 7;
+					cantcomida = cantcomida - 9;
+					if(cantcomida < 0){
+						cantcomida==0;
+					}
+					if(materiales < 0){
+						materiales==0;
+					}
+				}
+				break;
+		
+			case 0:
+				printf("\n Decides dejar que te roben...");
+				materiales = materiales - 7;
+				cantcomida = cantcomida - 9;
+				if(cantcomida < 0){
+					cantcomida = 0;
+				}
+				if(materiales < 0){
+					materiales = 0;
+				}
+				if (cantcomida<=0 && materiales<=0){
+					printf("\n Debido a que no tienes nada que los ladrones puedan robar, estos deciden asesinar a todo el grupo...");
+					goto F;
+				}
+				break;
+				}
+				}
+	
+
+if(cantcomida < 0){
+	cantcomida = 0;
+}
+
+if(materiales < 0){
+	materiales = 0;
+}
+		
 	//menu 
 	do{
 	
