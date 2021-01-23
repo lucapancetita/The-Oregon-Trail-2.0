@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, decrobo, probC, probC2;
+int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, probrobo2, decrobo, probC, probC2;
 float rta, hambre1=100, hambre2=100, hambre3=100, hambre4=100, hambre5=100, salud1=100, salud2=100, salud3=100, salud4=100, salud5=100;
 main(){
 srand (getpid());
@@ -56,7 +56,7 @@ printf("\nl:ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:lO");
 printf("\n");
 printf("\nBy LucaPancetitA");
 printf("\n");
-printf("Alpha 18");
+printf("Alpha 20");
 
 getch();
 
@@ -222,6 +222,8 @@ getch();
 	}
 	}while (rta3 != 1);
 	
+	//comienza el juego
+	
 	contdia++;
 	for(i=0;i<10;i++){
 
@@ -320,6 +322,23 @@ getch();
 		}
 	if(hambre5 < 0){
 			hambre5==0;
+		}
+
+//Hambre = 100
+	if(hambre1 > 100){
+			hambre1 = 100;
+		}
+	if(hambre2 > 100){
+			hambre2 = 100;
+		}
+	if(hambre3 > 100){
+			hambre3 = 100;
+		}
+	if(hambre4 > 100){
+			hambre4 = 100;
+		}
+	if(hambre5 > 100){
+			hambre5 = 100;
 		}
 
 
@@ -431,10 +450,17 @@ getch();
 			scanf("%d", &decrobo);
 		switch(decrobo){
 			case 1:
-				if(municion > 0){
+				probrobo2 = rand() % 11;
+				if(probrobo2 > 2 && municion > 0){
 					municion=municion - 1;
 					printf("\n Te defendiste con exito de los ladrones...");
-				} else {
+				}  
+				if(probrobo2 <= 2 && municion > 0){
+					printf("\n Fallaste el tiro....");
+					printf("\n Los ladrones deciden asesinar a todo el grupo...");
+					goto F;
+				}
+				if(municion < 1){
 					printf("\n No tienes munición....");
 					materiales = materiales - 7;
 					cantcomida = cantcomida - 9;
@@ -505,6 +531,22 @@ if(materiales < 0){
 		case 2:
 		printf("\n Estado de la tripulacion: ");
 		do {
+			//Hambre = 100
+			if(hambre1 > 100){
+					hambre1 = 100;
+				}
+			if(hambre2 > 100){
+					hambre2 = 100;
+				}
+			if(hambre3 > 100){
+					hambre3 = 100;
+				}
+			if(hambre4 > 100){
+					hambre4 = 100;
+				}
+			if(hambre5 > 100){
+					hambre5 = 100;
+				}
 			printf("\n");
 			printf("\n Opciones:");
 			printf("\n 1=%s - 2= %s", nombre1, nombre2);
@@ -529,8 +571,13 @@ if(materiales < 0){
 			printf("Desea alimentar a este tripulante? 1=si/0=no: ");
 			scanf("%d", &rta4);
 			if(rta4 == 1 && cantcomida > 2){
+				if(hambre1 >= 100){
+					printf("\n Esta persona no necesita ser alimentada....");
+				}
+				if(hambre1 < 100){
 				hambre1 = hambre1 + 25;
 				cantcomida = cantcomida - 3;
+				}
 			}
 			if(rta4 == 1 && cantcomida < 2){
 				printf("\n No tienes suficiente comida");
@@ -554,8 +601,13 @@ if(materiales < 0){
 			printf("Desea alimentar a este tripulante? 1=si/0=no: ");
 			scanf("%d", &rta4);
 			if(rta4 == 1 && cantcomida > 2){
+				if(hambre2 >= 100){
+					printf("\n Esta persona no necesita ser alimentada....");
+				}
+				if(hambre2 < 100){
 				hambre2 = hambre2 + 25;
 				cantcomida = cantcomida - 3;
+				}
 			}
 			if(rta4 == 1 && cantcomida < 2){
 				printf("\n No tienes suficiente comida");
@@ -579,8 +631,13 @@ if(materiales < 0){
 			printf("Desea alimentar a este tripulante? 1=si/0=no: ");
 			scanf("%d", &rta4);
 			if(rta4 == 1 && cantcomida > 2){
+				if(hambre3 >= 100){
+					printf("\n Esta persona no necesita ser alimentada....");
+				}
+				if(hambre3 < 100){
 				hambre3 = hambre3 + 25;
 				cantcomida = cantcomida - 3;
+				}
 			}
 			if(rta4 == 1 && cantcomida < 2){
 				printf("\n No tienes suficiente comida");
@@ -603,8 +660,13 @@ if(materiales < 0){
 			printf("Desea alimentar a este tripulante? 1=si/0=no: ");
 			scanf("%d", &rta4);
 			if(rta4 == 1 && cantcomida > 2){
+				if(hambre4 >= 100){
+					printf("\n Esta persona no necesita ser alimentada....");
+				}
+				if(hambre4 < 100){
 				hambre4 = hambre4 + 25;
 				cantcomida = cantcomida - 3;
+				}
 			}
 			if(rta4 == 1 && cantcomida < 2){
 				printf("\n No tienes suficiente comida");
@@ -628,8 +690,13 @@ if(materiales < 0){
 			printf("Desea alimentar a este tripulante? 1=si/0=no: ");
 			scanf("%d", &rta4);
 			if(rta4 == 1 && cantcomida > 2){
+				if(hambre5 >= 100){
+					printf("\n Esta persona no necesita ser alimentada....");
+				}
+				if(hambre5 < 100){
 				hambre5 = hambre5 + 25;
 				cantcomida = cantcomida - 3;
+				}
 			}
 			if(rta4 == 1 && cantcomida < 2){
 				printf("\n No tienes suficiente comida");
@@ -677,8 +744,14 @@ if(materiales < 0){
 		switch(rta5){
 			case 1:
 			if(materiales > 0 && materiales > 4){
+			if(estC < 100){
 				estC = estC + 15;
-				materiales = materiales - 4;	
+				materiales = materiales - 4;
+				}
+			if(estC >= 100){
+				printf("\n La carreta no necesita ser reparada...");
+			} 
+				
 			} else {
 			printf("\nNo tienes suficientes materiales...");		
 			}
@@ -691,6 +764,9 @@ if(materiales < 0){
 		
 		}
 		printf("\n");
+		}
+		if(estC > 100){
+			estC = 100;
 		}
 		getch();
 		break;
