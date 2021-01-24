@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, probrobo2, decrobo, probC, probC2, probT, probCom, rtaT, rtaCom, rta6;
+int i,rta2, rta3, rta4, rta5, rtaE, cantcomida, municion, materiales, est1, est2, est3, est4, est5, estC, suerte, robo, start, contdia=0, probrobo, probrobo2, decrobo, probC, probC2, probT, probCom, rtaT, rtaCom, rta6, cont6;
 float rta, hambre1=100, hambre2=100, hambre3=100, hambre4=100, hambre5=100, salud1=100, salud2=100, salud3=100, salud4=100, salud5=100;
 main(){
 srand (getpid());
@@ -499,10 +499,12 @@ if(cantcomida < 0){
 if(materiales < 0){
 	materiales = 0;
 }
-		
+
+cont6=0;
+
 	//menu 
 	do{
-	
+	menu:	
 	rta2==0;
 	rta3==0;
 	rta4==0;
@@ -513,7 +515,7 @@ if(materiales < 0){
 	printf("\n Que quieres hacer?");
 	printf("\n 1. Continuar el viaje - 2. Revisar estado de los tripulantes");
 	printf("\n 3. Revisar suministros - 4. Observar el paisaje");
-	printf("\n 5. Revisar estado de la carreta - 6. Cazar");
+	printf("\n 5. Revisar estado de la carreta - 6. Conseguir Suministros");
 	printf("\n Escriba aqui: ");
 	scanf("%d", &rta2);
 
@@ -744,14 +746,13 @@ if(materiales < 0){
 		switch(rta5){
 			case 1:
 			if(materiales > 0 && materiales > 4){
+			if(estC >= 100){
+			printf("\n La carreta no necesita ser reparada...");
+			} 
 			if(estC < 100){
 				estC = estC + 15;
 				materiales = materiales - 4;
-				}
-			if(estC >= 100){
-				printf("\n La carreta no necesita ser reparada...");
-			} 
-				
+				}				
 			} else {
 			printf("\nNo tienes suficientes materiales...");		
 			}
@@ -772,8 +773,10 @@ if(materiales < 0){
 		break;
 		
 		case 6:
-			printf("\n Que materiales quieres conseguir?");
-			printf("\n 1-Materiales 2-Comida: ");
+			cont6 = cont6 + 1;
+			if(cont6 <= 1){
+			printf("\n Que suministros quieres conseguir?");
+			printf("\n 1-Materiales 2-Comida (Si escribes una opción incorrecta perderas la oportunidad de conseguir materiales...): ");
 			scanf("%d", &rta6);
 			switch(rta6){
 				case 1:
@@ -787,6 +790,32 @@ if(materiales < 0){
 					printf("\nEscriba su eleccion aqui: ");
 					scanf("%d", &rtaT);
 					printf("rtaT: %d", rtaT);
+					
+					if(rtaT == 1 && salud1 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 2 && salud2 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 3 && salud3 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 4 && salud4 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 5 && salud5 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
 					if(probT <= 10){
 						printf("\n Mientras talabas el arbol, este se cae sobre ti....");
 						if (rtaT == 1){
@@ -835,7 +864,34 @@ if(materiales < 0){
 					printf("\n 1=%s - 2= %s", nombre1, nombre2);
 					printf("\n 3=%s - 4=%s", nombre3, nombre4);
 					printf("\n 5=%s", nombre5);
+					printf("\n Ingrese su opcion aqui: ");
 					scanf("%d", &rtaCom);
+					
+					if(rtaT == 1 && salud1 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 2 && salud2 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 3 && salud3 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 4 && salud4 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
+					if(rtaT == 5 && salud5 <= 0){
+						printf("Esta persona esta muerta :/, perdes la oportunidad de conseguir suministros...");
+						goto menu;
+					}
+					
 					if(probCom <= 10){
 						printf("\n Fuiste asesinado por un animal salvaje....");
 						if (rtaCom == 1){
@@ -866,7 +922,7 @@ if(materiales < 0){
 						printf("\n Comida conseguida: 10");
 						cantcomida = cantcomida + 10;
 					}
-					if(probCom = 100){
+					if(probCom == 100){
 						printf("\nEncontraste una cabaña abandonada llena de comida...");
 						printf("\n Comida conseguida: 40");
 						printf("\n Balas conseguidas: 2");
@@ -876,9 +932,13 @@ if(materiales < 0){
 					getch();
 					break;
 			}
+		}
+		if(cont6 > 1){
+			printf("\n Ya es muy tarde para conseguir suministros...");
+		}
 			getch();
 			break;
-		
+
 	}
 	
 	}while (rta2 != 1);
